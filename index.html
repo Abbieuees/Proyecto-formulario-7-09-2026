@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Escuela</title>
+    
+</head>
+<body>
+    <header>
+        <h1>MI ESCUELA</h1>
+        <img src="use/logo1.jpg" alt="Logo de la escuela" width="200">
+        <p>Bienvenido a la página web oficial de Fe y Alegria Los Laureles.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="registro.html">Registro</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <section id="resultado" hidden>
+                <h2>Bienvenid@ <span id="rNombre"></span></h2>
+            </section>
+        </article>
+
+        <section>
+            <h2>Experiencia</h2>
+            <p>Descubre nuestra historia y trayectoria.</p>
+        </section>
+
+        <section>
+            <h2>Honores</h2>
+            <p>Conoce los reconocimientos que hemos obtenido.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mi Escuela. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+    window.addEventListener("DOMContentLoaded", function () {
+        const guardado = sessionStorage.getItem("datosFormulario");
+
+        if (guardado) {
+            const datos = JSON.parse(guardado);
+            document.getElementById("rNombre").textContent = datos.nombre;
+            document.getElementById("resultado").hidden = false;
+        }
+
+        document.getElementById("btnLimpiar").addEventListener("click", function () {
+            sessionStorage.removeItem("datosFormulario");
+            location.reload();
+        });
+    });
+    </script>
+</body>
+</html>
